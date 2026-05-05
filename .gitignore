@@ -1,0 +1,24 @@
+# Claude instruction files — local only, never committed
+CLAUDE.md
+.claude/
+claude-notes/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+dist/
+*.egg-info/
+
+# Ruff
+.ruff_cache/
+
+# pytest
+.pytest_cache/
+
+# Local practice — never committed
+attempts/
+notes/
+scratch/
