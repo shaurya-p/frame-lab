@@ -32,19 +32,19 @@ uv sync
 
 ## How to run tests
 
-Run all tests:
+Validate all reference solutions (used by CI):
 ```bash
-uv run pytest -q
+uv run pytest problems/*/test_solution.py -q
 ```
 
-Run one problem:
+Test your own attempt against a problem's test suite:
 ```bash
-uv run pytest problems/011_iou_two_boxes/test_starter.py -q
+uv run pytest problems/001_filter_detections_by_score/test_starter.py -q
 ```
 
 Run with full output:
 ```bash
-uv run pytest problems/011_iou_two_boxes/test_starter.py -vv
+uv run pytest problems/001_filter_detections_by_score/test_starter.py -vv
 ```
 
 ---

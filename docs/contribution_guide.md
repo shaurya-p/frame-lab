@@ -21,7 +21,7 @@ frame-lab problems are small, focused, and independently testable. Each problem 
 - [ ] Starter file has no hints, pseudocode, or partial implementation.
 - [ ] Solution file is simple, readable, and handles edge cases.
 - [ ] Tests cover correctness, edge cases, mutation, shape, and dtype.
-- [ ] Tests pass with `uv run pytest -q` against `solution.py`.
+- [ ] Tests pass with `uv run pytest problems/*/test_solution.py -q` against `solution.py`.
 - [ ] All files pass `uv run ruff check .`.
 
 ## Tooling commands
@@ -30,10 +30,10 @@ frame-lab problems are small, focused, and independently testable. Each problem 
 # Install dependencies
 uv sync
 
-# Run all tests
-uv run pytest -q
+# Validate all reference solutions (CI)
+uv run pytest problems/*/test_solution.py -q
 
-# Run one problem
+# Test one problem's starter (learner practice)
 uv run pytest problems/NNN_problem_name/test_starter.py -q
 
 # Lint

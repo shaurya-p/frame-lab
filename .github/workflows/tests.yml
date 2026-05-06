@@ -22,4 +22,4 @@ jobs:
         run: uv sync
 
       - name: Run tests
-        run: uv run pytest -q
+        run: uv run pytest problems/*/test_solution.py -q
