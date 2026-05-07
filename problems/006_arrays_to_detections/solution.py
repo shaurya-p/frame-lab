@@ -17,6 +17,6 @@ def arrays_to_detections(
         List of dicts with 'bbox' (list), 'score' (float), and 'class_id' (int).
     """
     return [
-        {"bbox": row.tolist(), "score": float(score), "class_id": int(class_id)}
-        for row, score, class_id in zip(boxes, scores, class_ids)
+        {"bbox": box.tolist(), "score": float(score), "class_id": int(class_id)}
+        for box, score, class_id in zip(boxes, scores, class_ids)
     ]
