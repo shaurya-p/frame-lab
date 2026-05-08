@@ -61,11 +61,13 @@ iou_two_boxes(box_a, box_b)
 ## Constraints
 
 - If `union == 0`, return `0.0`
-- Inverted or degenerate boxes (`x2 <= x1` or `y2 <= y1`) have area `0`
+- Inverted or degenerate boxes (`x2 <= x1` or `y2 <= y1`) have area `0` — use `max(0, w) * max(0, h)`, not `abs(w) * abs(h)`
 - Use continuous box geometry — not `+1` pixel geometry
 - Do not mutate input arrays
 - Return a Python `float`, not a NumPy scalar
 - Use only NumPy
+
+> **Note on test coverage:** For inverted boxes, the standard min/max intersection formula always produces zero intersection, so black-box IoU tests alone cannot detect every incorrect area implementation. Direct area-clamping behavior is verified independently by Problem 010 `box_area`.
 
 ## Edge cases
 

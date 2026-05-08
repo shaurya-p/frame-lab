@@ -51,7 +51,19 @@ def test_both_zero_area_produces_zero():
 
 
 def test_inverted_box_produces_zero():
+    # Confirms behavioral contract: inverted box → IoU 0.0.
+    # Note: the standard min/max intersection formula always gives 0 for inverted
+    # boxes, so this test cannot detect a wrong internal area calculation. Direct
+    # area clamping is enforced by Problem 010 box_area.
     box_a = np.array([0, 0, 10, 10], dtype=float)
+    box_b = np.array([10, 10, 5, 5], dtype=float)
+    assert iou_two_boxes(box_a, box_b) == pytest.approx(0.0)
+
+
+def test_both_inverted_boxes_returns_zero():
+    # Both inverted → area=0, union=0. Tests the union==0 guard specifically;
+    # a missing guard would produce NaN (0/0) and fail pytest.approx(0.0).
+    box_a = np.array([10, 10, 5, 5], dtype=float)
     box_b = np.array([10, 10, 5, 5], dtype=float)
     assert iou_two_boxes(box_a, box_b) == pytest.approx(0.0)
 
