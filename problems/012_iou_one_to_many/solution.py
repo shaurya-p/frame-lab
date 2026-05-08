@@ -11,12 +11,24 @@ def iou_one_to_many(box: np.ndarray, boxes: np.ndarray) -> np.ndarray:
     Returns:
         (N,) float array of IoU values. Elements are 0.0 where union is zero.
     """
-    inter_w = np.clip(np.minimum(box[2], boxes[:, 2]) - np.maximum(box[0], boxes[:, 0]), 0, None)
-    inter_h = np.clip(np.minimum(box[3], boxes[:, 3]) - np.maximum(box[1], boxes[:, 1]), 0, None)
-    intersection = inter_w * inter_h
+    query_box_area = max(0.0, box[2] - box[0]) * max(0.0, box[3] - box[1])
+    boxes_area = np.maximum(0.0, boxes[:, 2] - boxes[:, 0]) * np.maximum(0.0, boxes[:, 3] - boxes[:, 1])
 
-    area_box = max(0.0, box[2] - box[0]) * max(0.0, box[3] - box[1])
-    area_boxes = np.clip(boxes[:, 2] - boxes[:, 0], 0, None) * np.clip(boxes[:, 3] - boxes[:, 1], 0, None)
-    union = area_box + area_boxes - intersection
+    inter_w = np.maximum(
+        0.0,
+        np.minimum(boxes[:,2], box[2]) - np.maximum(boxes[:, 0], box[0])
+    )
+    inter_h = np.maximum(
+        0.0,
+        np.minimum(boxes[:, 3], box[3]) - np.maximum(boxes[:, 1], box[1])
+    )
 
-    return np.where(union == 0, 0.0, intersection / np.where(union == 0, 1.0, union))
+    inter = inter_w * inter_h
+    union = boxes_area + query_box_area - inter
+
+    return np.divide(
+        inter,
+        union,
+        out=np.zeros_like(inter, dtype=float),
+        where=union!=0
+    )
