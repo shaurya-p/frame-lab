@@ -84,6 +84,7 @@ uv run pytest problems/001_filter_detections_by_score/test_starter.py -vv
 | 011 | iou_two_boxes | Easy |
 | 012 | iou_one_to_many | Medium |
 | 013 | iou_matrix | Medium |
+| 016 | greedy_iou_match | Medium |
 
 ### Selection & Suppression
 | # | Problem | Difficulty |
