@@ -35,6 +35,17 @@ merge heads → (N, L, embed_dim)
 out = out_proj(attn)
 ```
 
+## Required attribute names
+
+The module **must** expose these submodules with exactly these names. The test suite transfers reference weights into them by name, so a module using different names will fail with an `AttributeError`:
+
+| Attribute | Type |
+|---|---|
+| `q_proj` | `nn.Linear(embed_dim, embed_dim)` |
+| `k_proj` | `nn.Linear(embed_dim, embed_dim)` |
+| `v_proj` | `nn.Linear(embed_dim, embed_dim)` |
+| `out_proj` | `nn.Linear(embed_dim, embed_dim)` |
+
 ## Constraints
 
 - `embed_dim % num_heads == 0` is required (each head gets `head_dim = embed_dim // num_heads`)
