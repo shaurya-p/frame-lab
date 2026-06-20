@@ -94,6 +94,15 @@ uv run pytest problems/001_filter_detections_by_score/test_starter.py -vv
 
 ---
 
+## v0.2 problems
+
+### Deep Learning Primitives
+| # | Problem | Difficulty |
+|---|---|---|
+| 017 | conv2d_forward | Medium |
+
+---
+
 ## Roadmap
 
 Future categories planned:
