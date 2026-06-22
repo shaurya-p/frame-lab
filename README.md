@@ -103,6 +103,7 @@ uv run pytest problems/001_filter_detections_by_score/test_starter.py -vv
 | 018 | scaled_dot_product_attention | Medium |
 | 019 | multi_head_attention | Medium |
 | 020 | patch_embed | Medium |
+| 021 | transformer_encoder_block | Medium |
 
 ---
 
