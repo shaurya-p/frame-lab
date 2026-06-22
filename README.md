@@ -102,6 +102,7 @@ uv run pytest problems/001_filter_detections_by_score/test_starter.py -vv
 | 017 | conv2d_forward | Medium |
 | 018 | scaled_dot_product_attention | Medium |
 | 019 | multi_head_attention | Medium |
+| 020 | patch_embed | Medium |
 
 ---
 
