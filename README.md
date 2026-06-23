@@ -104,6 +104,7 @@ uv run pytest problems/001_filter_detections_by_score/test_starter.py -vv
 | 019 | multi_head_attention | Medium |
 | 020 | patch_embed | Medium |
 | 021 | transformer_encoder_block | Medium |
+| 022 | vit_forward | Hard |
 
 ---
 
